@@ -30,7 +30,7 @@ module spi_clk_gen
 
   integer spiClkPeriodCount;
 
-  assign spiClkOut                 = (CPOL == 1'b0) ? spiClkLocal : ~spiClkLocal;
+  assign spiClkOut                 = (enIn == 1'b1) ? ((CPOL == 1'b0) ? spiClkLocal : ~spiClkLocal) : CPOL;
   assign risingSpiClkEdgePulseOut  = (CPOL == 1'b0) ? risingSpiClkEdgePulse : fallingSpiClkEdgePulse;
   assign fallingSpiClkEdgePulseOut = (CPOL == 1'b0) ? fallingSpiClkEdgePulse : risingSpiClkEdgePulse;
   
